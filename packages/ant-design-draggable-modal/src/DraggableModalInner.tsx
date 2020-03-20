@@ -6,7 +6,7 @@ import { ResizeHandle } from './ResizeHandle'
 import { useDrag } from './useDrag'
 import { DraggableModalContextMethods } from './DraggableModalContext'
 import { usePrevious } from './usePrevious'
-import { ModalID, ModalState } from './draggableModalReducer'
+import { ModalID, ModalState, InitProps } from './draggableModalReducer'
 import { useResize } from './useResize'
 
 const modalStyle: React.CSSProperties = { margin: 0, paddingBottom: 0, pointerEvents: 'auto' }
@@ -26,13 +26,14 @@ export const DraggableModalInner = memo(
         visible,
         children,
         title,
+        initProps, // pass in initProps when 'mount'
         ...otherProps
     }: DraggableModalInnerProps) => {
         // Call on mount and unmount.
         useEffect(() => {
-            dispatch({ type: 'mount', id })
+            dispatch({ type: 'mount', id, initProps })
             return () => dispatch({ type: 'unmount', id })
-        }, [dispatch, id])
+        }, [dispatch, id, initProps])
 
         // Bring this to the front if it's been opened with props.
         const visiblePrevious = usePrevious(visible)

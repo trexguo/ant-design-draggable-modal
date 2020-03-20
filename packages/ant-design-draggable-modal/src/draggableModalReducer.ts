@@ -17,6 +17,14 @@ export interface ModalState {
     visible: boolean
 }
 
+export interface InitProps {
+    x?: number
+    y?: number
+    width?: number
+    height?: number
+    zIndex?: number
+}
+
 // State of all modals.
 export interface ModalsState {
     maxZIndex: number
@@ -35,21 +43,22 @@ export const initialModalsState: ModalsState = {
     modals: {},
 }
 
-export const initialModalState: ModalState = {
+export const initialModalState = (initProps?: InitProps): ModalState => ({
     x: 0,
     y: 0,
     width: 800,
     height: 800,
     zIndex: 0,
+    ...initProps,
     visible: false,
-}
+})
 
 export type Action =
     | { type: 'show'; id: ModalID }
     | { type: 'hide'; id: ModalID }
     | { type: 'focus'; id: ModalID }
     | { type: 'unmount'; id: ModalID }
-    | { type: 'mount'; id: ModalID }
+    | { type: 'mount'; id: ModalID; initProps: InitProps }
     | { type: 'windowResize'; size: { width: number; height: number } }
     | { type: 'drag'; id: ModalID; x: number; y: number }
     | {
@@ -62,7 +71,7 @@ export type Action =
       }
 
 export const getModalState = (state: ModalsState, id: ModalID): ModalState =>
-    state.modals[id] || initialModalState
+    state.modals[id] || initialModalState()
 
 const getNextZIndex = (state: ModalsState, id: string): number =>
     getModalState(state, id).zIndex === state.maxZIndex ? state.maxZIndex : state.maxZIndex + 1
@@ -202,15 +211,16 @@ export const draggableModalReducer = (state: ModalsState, action: Action): Modal
             }
         }
         case 'mount':
+            // console.log('mount', action)
             return {
                 ...state,
                 maxZIndex: state.maxZIndex + 1,
                 modals: {
                     ...state.modals,
                     [action.id]: {
-                        ...initialModalState,
-                        x: state.windowSize.width / 2 - initialModalState.width / 2,
-                        y: state.windowSize.height / 2 - initialModalState.height / 2,
+                        ...initialModalState(action.initProps),
+                        x: state.windowSize.width / 2 - initialModalState(action.initProps).width / 2,
+                        y: state.windowSize.height / 2 - initialModalState(action.initProps).height / 2,
                         zIndex: state.maxZIndex + 1,
                     },
                 },

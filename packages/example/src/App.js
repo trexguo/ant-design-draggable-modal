@@ -17,7 +17,11 @@ const ModalWithButton = props => {
                 {visible ? `Close ${props.title}` : `Open ${props.title}`}
             </Button>
             <DraggableModal visible={visible} onOk={onOk} onCancel={onCancel} {...props}>
-                Body text.
+            Body text.
+            Body text.
+            Body text.
+            Body text.
+            Body text.
             </DraggableModal>
         </>
     )
@@ -32,8 +36,8 @@ const App = () => (
                     <Breadcrumb.Item>Draggable Modal</Breadcrumb.Item>
                 </Breadcrumb>
                 <div style={{ background: '#fff', padding: 24 }}>
-                    <ModalWithButton title="Modal A" />
-                    <ModalWithButton title="Modal B" />
+                    <ModalWithButton title="Modal A with mask" mask />
+                    <ModalWithButton title="Modal B with customize height" initProps={{ height: 300, width: 400 }} />
                     <ModalWithButton title="Modal C" />
                 </div>
             </Content>
