@@ -6,12 +6,12 @@ Modal from Ant Design, draggable, improved.
 
 [![Version][version-badge]][package]
 [![Downloads][downloads-badge]][npmtrends]
-[![BundlePhobia](https://img.shields.io/bundlephobia/minzip/ant-design-draggable-modal.svg?style=flat-square)](https://bundlephobia.com/result?p=ant-design-draggable-modal)
+[![BundlePhobia](https://img.shields.io/bundlephobia/minzip/ant-design-draggable-modal-fixed.svg?style=flat-square)](https://bundlephobia.com/result?p=ant-design-draggable-modal-fixed)
 [![MIT License][license-badge]][license]
 
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
-[![Tweet][twitter-badge]][twitter]
+<!-- [![Tweet][twitter-badge]][twitter] -->
 
 </div>
 
