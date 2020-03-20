@@ -1,11 +1,11 @@
 {
-    "name": "ant-design-draggable-modal",
+    "name": "ant-design-draggable-modal-fixed",
     "version": "0.0.13",
     "description": "Modal from Ant Design, draggable.",
-    "homepage": "https://github.com/DylanVann/ant-design-draggable-modal#readme",
+    "homepage": "https://github.com/trexguo/ant-design-draggable-modal#readme",
     "repository": {
         "type": "git",
-        "url": "https://github.com/DylanVann/ant-design-draggable-modal.git"
+        "url": "https://github.com/trexguo/ant-design-draggable-modal.git"
     },
     "license": "MIT",
     "author": "DylanVann",
